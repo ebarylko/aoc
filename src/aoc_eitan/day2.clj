@@ -22,23 +22,22 @@
   post: returns a vector with the [min max ltr pwd]"
   [rule]
   (let [[_ min max ltr pwd]  (re-matches #"(\d+)-(\d+) (\w): (\w+)" rule)]
-    [(Integer/parseInt min) (Integer/parseInt max) (first ltr) pwd]
-    ))
+    [(Integer/parseInt min)
+     (Integer/parseInt max)
+     (first ltr)
+     pwd]))
 
-(defn count-valid-password
-  "pre: takes a collection of strings containing the password policy and password
-  post: returns the number of valid passwords"
-  [coll]
+(defn count-valid-password*
+  "pre: takes a function which validates the password and a collection of strings containing the password policy and password
+  post: returns the number of passwords that are valid by the function"
+  [f coll]
   (->> coll
        (map parse-pwd-rule)
-       (keep valid-password)
+       (keep f)
        (count)))
 
-(defn count-valid-password-pos
-  "pre: takes a collection of strings containing the password policy and password
-  post: returns the number of valid passwords"
-  [coll]
-  (->> coll
-       (map parse-pwd-rule)
-       (keep valid-password-by-pos)
-       (count)))
+(def count-valid-password
+  (partial count-valid-password* valid-password))
+
+(def count-valid-password-pos
+  (partial count-valid-password* valid-password-by-pos))
