@@ -41,8 +41,3 @@
        (first)
   (apply *)))
 
-(multiply-2020-sum-trio [1000 1100 1010 10 987 3489])
-
-(to-target 2020 #{2000 1900 10 10} 20)
-
-(sum-to-target 20 #{1900 15 5})

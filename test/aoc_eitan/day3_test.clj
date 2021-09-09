@@ -10,16 +10,9 @@
 (def input
   (clojure.string/split-lines (slurp input-file)))
 
-input
-
-(nth (nth sample 2) 1)
-
-(nth (nth sample 2) (mod 12 11) )
-(count sample)
 
 (def sample
-  [
-   "..##......."
+  ["..##......."
    "#...#...#.."
    ".#....#..#."
    "..#.#...#.#"
@@ -29,8 +22,7 @@ input
    ".#........#"
    "#.##...#..."
    "#...##....#"
-   ".#..#...#.#"
-   ])
+   ".#..#...#.#"])
 
 (deftest test-part-a
   (testing "sample given"

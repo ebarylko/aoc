@@ -8,21 +8,6 @@
     (inc tree)
     (+ 0 tree)))
 
-(def sample
-  ["..##......."
-   "#...#...#.."
-   ".#....#..#."
-   "..#.#...#.#"
-   ".#...##..#."
-   "..#.##....."
-   ".#.#.#....#"
-   ".#........#"
-   "#.##...#..."
-   "#...##....#"
-   ".#..#...#.#"])
-
-(check-tree sample 0 4 1)
-
 (defn tree-count
   "pre: takes a vector of strings, the x-coordinate of the slope and the y-coordinate of the slope
   post: returns the amount of trees encountered by applying a slope of -1/3 repeatedly until crossing the final row"
