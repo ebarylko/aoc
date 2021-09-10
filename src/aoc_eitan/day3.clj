@@ -18,3 +18,14 @@
       (recur (check-tree coll tree x y)
              (mod (+ x x-slope) (count (first coll)))
              (+ y y-slope)))))
+
+(defn many-slopes
+  "pre: takes a collection of slopes and a forest
+  post: returns a collection of the trees encountered under the different slopes"
+  [slopes forest]
+  (->> slopes
+       (map #(apply tree-count forest %))
+       (apply *)))
+
+
+
