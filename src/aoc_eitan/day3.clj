@@ -3,10 +3,9 @@
 (defn check-tree
   "pre: takes an x and y coordinate of the forest, the forest, and a count of the trees encountered
   post: if the x and y coordinate at the forest contains '#', then increment the value of the tree count, otherwise add nothing."
-  [coll tree x y]
-  (if  (= \# (nth (nth coll y) x))
-    (inc tree)
-    (+ 0 tree)))
+  [coll tree-count x y]
+  (cond-> tree-count
+    (= \# (nth (nth coll y) x)) inc))
 
 (defn tree-count
   "pre: takes a vector of strings, the x-coordinate of the slope and the y-coordinate of the slope
